@@ -1,4 +1,4 @@
-package com.example.tutorial.scopefunctions
+package com.example.tutorial
 
 fun main(args : Array<String>){
 
