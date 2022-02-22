@@ -71,8 +71,42 @@ fun main(args : Array<String>){
 
     //.also - Extensions Functions
     //objeyi değişime uğratmadan, loglama, debug gibi olaylar için kullanabiliriz.
+    //letten farklı olarak aynı değeri döndürür.
+    var m = 1
+    m = m.also { it + 1 }.also { it + 1 }
+    println(m) //prints 1
+    data class Person2(var name: String, var tutorial : String)
+    var person2 = Person2("Anupam", "Kotlin")
+
+    var l = person2.let { it.tutorial = "Android" }
+    var al = person2.also { it.tutorial = "Android" }
+
+    println(l)//kotlin.Unit
+    println(al)//Person2(name=Anupam, tutorial=Android)
+    println(person2)//Person2(name=Anupam, tutorial=Android)
 
 
+    //run function - 2 türlü olarakda kullanılabilir.
+    var tutorial = "This is Kotlin Tutorial"
+    println(tutorial) //This is Kotlin Tutorial
+    tutorial = run {
+        val tutorial = "This is run function"
+        tutorial
+    }
+    println(tutorial) //This is run function
+
+    //with functions
+    //Bu object ile, aşağıdakileri gerçekleştir.
+    val numbers = mutableListOf("one", "two", "three")
+    with(numbers){
+        println("'with' is called with argument $this")//'with' is called with argument [one, two, three]
+        println("It contains $size elements")//It contains 3 elements
+    }
+
+    val firstAndLast = with(numbers){
+        "The first element ${first()},"+"the last element ${last()}"
+    }
+    println(firstAndLast)//The first element one,the last element three
 
 
 
